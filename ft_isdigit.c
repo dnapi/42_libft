@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 15:37:32 by apimikov          #+#    #+#             */
-/*   Updated: 2023/10/27 17:24:55 by apimikov         ###   ########.fr       */
+/*   Created: 2023/10/27 16:15:25 by apimikov          #+#    #+#             */
+/*   Updated: 2023/10/27 16:46:54 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+int	ft_isdigit(int c)
 {
-	unsigned char cc;
+	unsigned char s;
 
-	cc = c;
-	return ((cc >= 'a' && cc <= 'z') || (cc >= 'A' && cc <= 'Z'));
+	s = c;
+	return ('0' <= s && s <= '9');
 }
