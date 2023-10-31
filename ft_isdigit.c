@@ -6,13 +6,13 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:15:25 by apimikov          #+#    #+#             */
-/*   Updated: 2023/10/27 16:46:54 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:06:27 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isdigit(int c)
 {
-	unsigned char s;
+	unsigned char	s;
 
 	s = c;
 	return ('0' <= s && s <= '9');
