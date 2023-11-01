@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 08:48:51 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/01 08:48:53 by apimikov         ###   ########.fr       */
+/*   Created: 2023/11/01 08:47:17 by apimikov          #+#    #+#             */
+/*   Updated: 2023/11/01 08:47:45 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	len_d;
-	size_t	len_s;
-
-	len_s = 0;
-	len_d = 0;
-	while (src[len_s])
-		len_s++;
-	while (dst[len_d] && len_d <= dstsize)
-		len_d++;
-	if (dstsize == 0 || dstsize <= len_d)
-		return (len_s + dstsize);
-	while (*dst)
+	while (*s)
 	{
-		dst++;
-		dstsize--;
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
-	while (--dstsize > 0 && *src)
-		*dst++ = *src++;
-	*dst = '\0';
-	return (len_s + len_d);
+	if (*s == (char)c)
+		return ((char *)s);
+	else
+		return (NULL);
 }

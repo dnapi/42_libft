@@ -8,15 +8,17 @@ int ft_isdigit_test(int num_test); // 02
 void ft_memset_test(int num_test); // 07
 void ft_bzero_test(int num_test);  // 08	
 void ft_memcpy_test(int num_test); // 09
+void ft_memmove_test(int num_test);  // 10
 
 
 int main(void)
 {
-	ft_isalpha_test(1);
-	ft_isdigit_test(2);
+//	ft_isalpha_test(1);
+//	ft_isdigit_test(2);
 //	ft_memset_test(7);
 //	ft_bzero_test(8);
 //	ft_memcpy_test(9);
+	ft_memmove_test(10);
 	return (0);
 }
 
@@ -152,6 +154,33 @@ void	ft_memcpy_test(int num_test)  // 09
 
     ft_memcpy(numbers_dst, numbers_src, sizeof(numbers_src) - 5);
     memcpy(numbers_dst_org, numbers_src, sizeof(numbers_src) - 5);
+    for (int i = 0; i < 5; ++i) {
+        printf("	%d vs %d \n", numbers_dst[i],numbers_dst_org[i]);
+    }
+    printf("\n");
+
+	printf("End of test %d\n\n",num_test);
+    return ;
+}
+
+void	ft_memmove_test(int num_test)  // 09	
+{	
+	int numbers_dst[5];
+	int numbers_dst_org[5];
+	int numbers_src[5];
+	int c;
+
+	printf("START Test %d - memmove\n\n", num_test);
+	c = 0;
+    memset(numbers_src, c + 1, sizeof(numbers_src));
+    memset(numbers_dst, c + 0, sizeof(numbers_dst));
+    memset(numbers_dst_org, c + 0, sizeof(numbers_dst));
+	printf("	sizeof(numbers_src)=%lu\n", sizeof(numbers_src));
+	printf("	c = %d, unsigned char of c=%d\n", c,  (unsigned char)c);
+	printf("	c + 1 = %d, unsigned char of c + 1=%d\n", c + 1,  (unsigned char)(c + 1));
+
+    ft_memmove(numbers_dst, numbers_src, sizeof(numbers_src) - 5);
+    memmove(numbers_dst_org, numbers_src, sizeof(numbers_src) - 5);
     for (int i = 0; i < 5; ++i) {
         printf("	%d vs %d \n", numbers_dst[i],numbers_dst_org[i]);
     }
