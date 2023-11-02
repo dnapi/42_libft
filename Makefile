@@ -1,36 +1,25 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/31 14:25:18 by apimikov          #+#    #+#              #
-#    Updated: 2023/10/30 15:16:47 by apimikov         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = libft.a
 
-SRC		= ft_*.c
-OBJS	= ${SRC:.c=.o}
-NAME	= libft.a
-CC		= cc
-CFLAGS 	= -Wall -Wextra -Werror
-HEADER = libft.h
+SRC = 	ft_*.c
 
-%.o: %.c  $(HEADER)
-			${CC} ${CFLAGS} -c $< -o $@
+FLAGS = -Wall -Wextra -Werror
 
-$(NAME) :	${OBJS}
-			ar rc ${NAME} ${OBJS}
+OBJ = ${SRC:.c=.o}
 
-all: 		$(NAME)
+all: ${NAME}
 
-clean :
-			rm -f ${OBJS}
+${NAME}: ${OBJ}
+	ar -ruvcs $@ $^
 
-fclean:		clean
-			rm -f ${NAME}
+%.o: %.c
+	${CC} ${CFLAGS} -c $< -o $@
+	
+clean:
+	rm -f ${OBJ}
 
-re:			fclean all
+fclean: clean
+	rm -f ${NAME}
 
-.PHONY:		all clean fclean re
+re: fclean all
+
+.PHONY: all clean fclean re bonus
