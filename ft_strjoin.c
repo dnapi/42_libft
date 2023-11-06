@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:02:19 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/06 10:07:20 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:08:14 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	char	*pnt;
 
+	if (!s1 || ! s2)
+		return (NULL);
 	i = 0;
 	len = ft_strlen(s1) + ft_strlen(s2);
 	pnt = malloc(len + 1);

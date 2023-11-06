@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:43:29 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/06 11:43:32 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:03:34 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	**ft_split(char const *s, char c)
 	size_t	len;
 	char	**array;
 
+	if (!s)
+		return (NULL);
 	len = word_count_char(s, c);
 	array = (char **)malloc((len + 1) * sizeof(char *));
 	if (!array)

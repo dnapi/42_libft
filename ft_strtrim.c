@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:24:20 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/06 11:45:40 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:05:09 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	i2;
 	char	*pnt;
 
+	if (!s1 || !set)
+		return (NULL);
 	i1 = 0;
 	len = ft_strlen(s1);
 	i2 = len - 1;

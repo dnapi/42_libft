@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:33:34 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/06 09:33:40 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:07:30 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	char	*pnt;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	len_s = ft_strlen(s);
 	len_sub = 0;

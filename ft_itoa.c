@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:29:16 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/06 15:37:32 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:02:00 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ long	len_num(long num)
 	num = ft_abs(num);
 	order = 1;
 	while (num > 9)
-	
+	{
 		num = num / 10;
 		order++;
 	}
