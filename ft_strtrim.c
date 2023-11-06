@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:24:20 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/06 10:20:34 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:45:40 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	len;
 	size_t	i1;
 	size_t	i2;
-	char *pnt;
+	char	*pnt;
 
 	i1 = 0;
 	len = ft_strlen(s1);
@@ -28,9 +28,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i1++;
 	if (i1 == len)
 		return (ft_strdup(""));
-	while (in_set(s1[i2], set))
+	while (in_set(s1[i2], set) && i2)
 		i2--;
-	pnt = ft_substr(s1, (unsigned int)i1, (size_t)(i2 - i1));
+	pnt = ft_substr(s1, (unsigned int)i1, (size_t)(i2 - i1 + 1));
 	return (pnt);
 }
 

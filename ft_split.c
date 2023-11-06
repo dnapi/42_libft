@@ -5,48 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 09:03:58 by apimikov          #+#    #+#             */
-/*   Updated: 2023/08/31 09:54:33 by apimikov         ###   ########.fr       */
+/*   Created: 2023/11/06 11:43:29 by apimikov          #+#    #+#             */
+/*   Updated: 2023/11/06 11:43:32 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		is_sep(char c, char *charset);
-int		word_count(char *str, char *charset);
-void	write_word(char **arr, char **str, char *set);
+size_t	word_count_char(char const *s, char c);
+void	write_word_char(char **arr, char const **s, char c);
 
-char	**ft_split(char *str, char *charset)
+char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		len;
+	size_t	i;
+	size_t	len;
 	char	**array;
 
-	len = word_count(str, charset);
+	len = word_count_char(s, c);
 	array = (char **)malloc((len + 1) * sizeof(char *));
 	if (!array)
-		return (0);
+		return (NULL);
 	i = 0;
-	while (*str && i < len)
+	while (*s && i < len)
 	{
-		while (is_sep(*str, charset) && *str)
-			str++;
-		write_word(array + i, &str, charset);
+		while ((*s == c) && *s)
+			s++;
+		write_word_char(array + i, &s, c);
 		i++;
 	}
 	*(array + len) = NULL;
 	return (array);
 }
 
-void	write_word(char **arr, char **str, char *set)
+void	write_word_char(char **arr, char const **s, char c)
 {
-	char	*temp;
-	int		len;
-	int		i;
+	char const	*temp;
+	int			len;
+	int			i;
 
-	temp = *str;
+	temp = *s;
 	len = 0;
-	while (!is_sep(*temp, set) && *temp)
+	while ((*temp != c) && *temp)
 	{
 		len++;
 		temp++;
@@ -56,34 +55,35 @@ void	write_word(char **arr, char **str, char *set)
 	i = -1;
 	while (++i < len)
 	{
-		(*arr)[i] = **str;
-		(*str)++;
+		(*arr)[i] = **s;
+		(*s)++;
 	}
 	(*arr)[i] = '\0';
 	return ;
 }
 
-int	word_count(char *str, char *seps)
+size_t	word_count_char(char const *s, char c)
 {
-	int	count;
-	int	i;
+	size_t	count;
+	size_t	i;
 
 	count = 0;
 	i = 0;
-	while (str[i])
+	while (s[i])
 	{
-		if (is_sep(str[i], seps))
+		if (s[i] == c)
 		{
 			i++;
 			continue ;
 		}
 		count++;
-		while (!is_sep(str[i], seps) && str[i])
+		while ((s[i] != c) && s[i])
 			i++;
 	}
 	return (count);
 }
 
+/*
 int	is_sep(char c, char *charset)
 {
 	while (*charset)
@@ -94,3 +94,4 @@ int	is_sep(char c, char *charset)
 	}
 	return (0);
 }
+*/
