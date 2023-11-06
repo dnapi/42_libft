@@ -6,14 +6,14 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 06:50:31 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/02 10:23:31 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/03 08:55:40 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
+//size_t	ft_strlen(const char *s);
+//int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
@@ -34,6 +34,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	return (NULL);
 }
 
+/*
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
@@ -60,3 +61,4 @@ size_t	ft_strlen(const char *s)
 	}
 	return (count);
 }
+*/

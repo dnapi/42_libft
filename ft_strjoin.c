@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 10:49:18 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/03 09:17:13 by apimikov         ###   ########.fr       */
+/*   Created: 2023/11/06 10:02:19 by apimikov          #+#    #+#             */
+/*   Updated: 2023/11/06 10:07:20 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t			i;
-	unsigned char	*p1;
-	unsigned char	*p2;
+	size_t	len;
+	size_t	i;
+	char	*pnt;
 
 	i = 0;
-	p1 = (unsigned char *)s1;
-	p2 = (unsigned char *)s2;
-	while (i < n)
+	len = ft_strlen(s1) + ft_strlen(s2);
+	pnt = malloc(len + 1);
+	if (!pnt)
+		return (NULL);
+	while (i < len && s1[i])
 	{
-		if (p1[i] != p2[i])
-			return (p1[i] - p2[i]);
+		pnt[i] = s1[i];
 		i++;
 	}
-	return (0);
+	while (i < len && *s2)
+		pnt[i++] = *s2++;
+	pnt[i] = '\0';
+	return (pnt);
 }

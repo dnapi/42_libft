@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 10:49:18 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/03 09:17:13 by apimikov         ###   ########.fr       */
+/*   Created: 2023/11/03 13:13:34 by apimikov          #+#    #+#             */
+/*   Updated: 2023/11/03 14:45:42 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_atoi(char *str)
 {
-	size_t			i;
-	unsigned char	*p1;
-	unsigned char	*p2;
+	long long	sign;
+	size_t		i;
+	long long	answ;
 
+	sign = 1;
 	i = 0;
-	p1 = (unsigned char *)s1;
-	p2 = (unsigned char *)s2;
-	while (i < n)
+	answ = 0;
+	while ((8 < str[i] && str[i] < 14) || str[i] == ' ')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+		if (str[i++] == '-')
+			sign = -1;
+	while (str[i] != '\0' && '0' <= str[i] && str[i] <= '9')
 	{
-		if (p1[i] != p2[i])
-			return (p1[i] - p2[i]);
+		answ = answ * 10 + str[i] - '0';
 		i++;
 	}
-	return (0);
+	return (sign * answ);
 }

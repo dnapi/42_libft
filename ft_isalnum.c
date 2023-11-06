@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 10:49:18 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/03 09:17:13 by apimikov         ###   ########.fr       */
+/*   Created: 2023/11/03 14:02:06 by apimikov          #+#    #+#             */
+/*   Updated: 2023/11/03 14:03:55 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_isalnum(int c)
 {
-	size_t			i;
-	unsigned char	*p1;
-	unsigned char	*p2;
+	unsigned char	u;
 
-	i = 0;
-	p1 = (unsigned char *)s1;
-	p2 = (unsigned char *)s2;
-	while (i < n)
-	{
-		if (p1[i] != p2[i])
-			return (p1[i] - p2[i]);
-		i++;
-	}
-	return (0);
+	u = (unsigned char)c;
+	return ((u >= '0' && u <= '9') || (u >= 'A' && u <= 'Z')
+		|| (u >= 'a' && u <= 'z'));
 }
