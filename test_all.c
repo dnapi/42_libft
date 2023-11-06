@@ -1,5 +1,7 @@
+#include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 #include "libft.h"
 
 int	ft_isalpha_test(int num_test); // 01
@@ -9,6 +11,11 @@ void ft_memset_test(int num_test); // 07
 void ft_bzero_test(int num_test);  // 08	
 void ft_memcpy_test(int num_test); // 09
 void ft_memmove_test(int num_test);  // 10
+void ft_atoi_test(int num_test);  // 21
+
+void ft_substr_test(int num_test);  // 24
+void ft_itoa_test(int num_test);        //28
+
 
 
 int main(void)
@@ -18,7 +25,11 @@ int main(void)
 //	ft_memset_test(7);
 //	ft_bzero_test(8);
 //	ft_memcpy_test(9);
-	ft_memmove_test(10);
+//	ft_memmove_test(10);
+//	ft_atoi_test(21);
+//	ft_substr_test(24);
+	ft_itoa_test(28);  
+
 	return (0);
 }
 
@@ -189,4 +200,32 @@ void	ft_memmove_test(int num_test)  // 09
 	printf("End of test %d\n\n",num_test);
     return ;
 }
+
+void ft_atoi_test(int num_test) // 21
+{
+	
+	printf("START Test %d - atoi\n\n", num_test);
+	printf("%d\n", atoi("++548"));
+	printf("%d\n", ft_atoi("++548"));
+}
+	
+void ft_substr_test(int num_test)  //24
+{
+	char *pnt;
+
+	pnt = ft_substr("Hello", 0, 5);
+	printf("%s:lenth=%zu\n", pnt, ft_strlen(pnt));
+	write(1, pnt, 5);
+}
+
+
+void ft_itoa_test(int num_test)       //28
+{
+	char *s;
+	int i = -123;
+
+	s = ft_itoa(i);
+	printf("%s\n",s);
+}
+
 
