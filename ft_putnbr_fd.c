@@ -1,33 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:27:25 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/07 10:08:08 by apimikov         ###   ########.fr       */
+/*   Created: 2023/11/07 08:34:30 by apimikov          #+#    #+#             */
+/*   Updated: 2023/11/07 08:47:38 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
-{
-	int		i;
-	int		len;
-	char	*pnt;
+void	ft_putnbr_positive(int nb, int fd);
 
-	i = 0;
-	len = ft_strlen(s1);
-	pnt = malloc(len + 1);
-	if (!pnt)
-		return (NULL);
-	while (i < len)
+void	ft_putnbr_fd(int nb, int fd)
+{
+	if (nb == -2147483648)
 	{
-		pnt[i] = s1[i];
-		i++;
+		write(fd, "-2147483648", 11);
+		return ;
 	}
-	pnt[i] = '\0';
-	return (pnt);
+	else if (nb < 0)
+	{
+		write(fd, "-", 1);
+		nb = -nb;
+	}
+	ft_putnbr_positive(nb, fd);
+}
+
+void	ft_putnbr_positive(int nb, int fd)
+{
+	if (nb > 9)
+	{
+		ft_putnbr_positive(nb / 10, fd);
+		nb = nb % 10 + '0';
+		write(fd, &nb, 1);
+	}
+	else
+	{
+		nb = nb + '0';
+		write(fd, &nb, 1);
+	}
 }
