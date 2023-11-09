@@ -6,13 +6,13 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 13:13:34 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/03 14:45:42 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/07 11:03:15 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	long long	sign;
 	size_t		i;
