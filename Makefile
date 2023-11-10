@@ -37,20 +37,31 @@ SRC = ft_isascii.c \
 	  ft_putendl_fd.c \
 	  ft_putnbr_fd.c
 
+SRC_bonus = ft_lstnew_bonus.c
 
 FLAGS = -Wall -Wextra -Werror
-
-OBJ = ${SRC:.c=.o}
+OBJ = $(SRC:.c=.o)
+OBJ_bonus = $(SRC_bonus:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	cc $(FLAGS) -c $(SRC)
-	ar -rc $(NAME) $(OBJ)
+	ar -ruvcs $(NAME) $(OBJ)
 	ranlib $(NAME)
 
+.bonus_flag: $(NAME) $(OBJ) $(OBJ_bonus)
+	ar -ruvcs $(NAME) $(OBJ_bonus) $(OBJ)
+	ranlib $(NAME)
+	touch .bonus_flag
+
+bonus: .bonus_flag
+
+%.o: %.c
+	cc $(FLAGS) -c $^ -o $@ 
+
 clean:
-	rm -f ${OBJ}
+	rm -f ${OBJ} ${OBJ_bonus} 
+	rm -f .bonus_flag
 
 fclean: clean
 	rm -f ${NAME}

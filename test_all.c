@@ -19,6 +19,8 @@ void ft_itoa_test(int num_test);        //28
 
 void ft_strmapi_test(int num_test);        //29
 
+void ft_lstnew_test(int num_test);        //35
+
 
 
 //auxilary functions
@@ -33,10 +35,13 @@ int main(void)
 //	ft_memcpy_test(9);
 //	ft_memmove_test(10);
 //	ft_atoi_test(21);
-	ft_calloc_test(22);
+//	ft_calloc_test(22);
 //	ft_substr_test(24);
 //	ft_itoa_test(28);  
 //	ft_strmapi_test(29);
+//
+
+	ft_lstnew_test(35);
 	return (0);
 }
 
@@ -276,4 +281,24 @@ void	ft_calloc_test(int num_test)
 //	free(d1);
 	free(d2);
 	printf("TEST_SUCCESS\n");
+}
+
+
+
+void ft_lstnew_test(int num_test)
+{
+	t_list str;
+	t_list *pnt;
+	int c = 3;
+	void *vp;
+
+	vp = &c;
+	printf("%d\n",*(int *)vp);
+
+	pnt = ft_lstnew(&c);
+	c = 5;
+	str.content = &c;
+
+	printf("%d\n", *(int *)(str.content));
+	printf("%d\n", *(int *)(pnt->content));
 }
