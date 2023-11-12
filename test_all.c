@@ -2,8 +2,10 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
-#include "libft.h"
 #include <stddef.h>
+#include <limits.h>
+#include "libft.h"
+
 int	ft_isalpha_test(int num_test); // 01
 int ft_isdigit_test(int num_test); // 02
 
@@ -20,6 +22,8 @@ void ft_itoa_test(int num_test);        //28
 void ft_strmapi_test(int num_test);        //29
 
 void ft_lstnew_test(int num_test);        //35
+void ft_lstadd_front_test(int num_test);        //36
+void ft_lstsize_test(int num_test);        //37
 
 
 
@@ -41,7 +45,10 @@ int main(void)
 //	ft_strmapi_test(29);
 //
 
-	ft_lstnew_test(35);
+//	ft_lstnew_test(35);
+	ft_lstadd_front_test(36);     
+	ft_lstsize_test(37);       
+
 	return (0);
 }
 
@@ -270,7 +277,7 @@ char	mapi(unsigned int i, char c)
 //some code from libft-unit-test
 void	ft_calloc_test(int num_test)
 {
-	unsigned long size = SIZE_MAX;
+	unsigned long size = -1; //  SIZE_MAX;
 //	void * d1 = ft_calloc(size, sizeof(int));
 	void * d2 = calloc(size, sizeof(int));
 	
@@ -302,3 +309,46 @@ void ft_lstnew_test(int num_test)
 	printf("%d\n", *(int *)(str.content));
 	printf("%d\n", *(int *)(pnt->content));
 }
+
+void ft_lstadd_front_test(int num_test)    //36
+{
+	t_list *pnt_head;
+	t_list *pnt_new;
+	int c = 1;
+	int d = 2;
+
+//	vp = &c;
+//	printf("%d\n",*(int *)vp);
+	pnt_head = ft_lstnew(&c);
+	pnt_new = ft_lstnew(&d);
+
+	printf("New list head data: 1=%d\n", *(int *)(pnt_head->content));
+	ft_lstadd_front(&pnt_head,pnt_new);
+	printf("New list head data: 2=%d\n", *(int *)(pnt_head->content));
+
+
+
+}
+void ft_lstsize_test(int num_test)        //37
+{
+	t_list *pnt_head;
+	t_list *pnt_new;
+	int c = 1;
+	int d = 2;
+	int len = 0;
+
+	
+	len = ft_lstsize(pnt_head);
+	printf("list size: ?=%d\n", len);
+
+	pnt_head = ft_lstnew(&c);
+	len = ft_lstsize(pnt_head);
+	printf("list size: 1=%d\n", len);
+
+	pnt_new = ft_lstnew(&d);
+
+	ft_lstadd_front(&pnt_head,pnt_new);
+	len = ft_lstsize(pnt_head);
+	printf("list size: 2=%d\n", len);
+}
+
