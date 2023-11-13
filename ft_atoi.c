@@ -6,17 +6,25 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 13:13:34 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/07 11:03:15 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:32:14 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+int	inv_sign(int sign)
+{
+	if (sign > 0)
+		return (-1);
+	return (0);
+}
+
 int	ft_atoi(const char *str)
 {
-	long long	sign;
-	size_t		i;
-	long long	answ;
+	long	sign;
+	size_t	i;
+	long	answ;
+	long	temp;
 
 	sign = 1;
 	i = 0;
@@ -28,8 +36,11 @@ int	ft_atoi(const char *str)
 			sign = -1;
 	while (str[i] != '\0' && '0' <= str[i] && str[i] <= '9')
 	{
-		answ = answ * 10 + str[i] - '0';
-		i++;
+		temp = answ * 10 + str[i++] - '0';
+		if (temp >= answ)
+			answ = temp;
+		else
+			return (inv_sign(sign));
 	}
-	return (sign * answ);
+	return ((int)(sign * answ));
 }

@@ -6,14 +6,15 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:43:29 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/06 16:03:34 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:27:49 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 size_t	word_count_char(char const *s, char c);
-void	write_word_char(char **arr, char const **s, char c);
+int		write_word_char(char **arr, char const **s, char c);
+void	clean_array(char ***arr, size_t len);
 
 char	**ft_split(char const *s, char c)
 {
@@ -32,14 +33,31 @@ char	**ft_split(char const *s, char c)
 	{
 		while ((*s == c) && *s)
 			s++;
-		write_word_char(array + i, &s, c);
+		if (!write_word_char(array + i, &s, c))
+		{
+			clean_array(&array, i);
+			return (NULL);
+		}
 		i++;
 	}
 	*(array + len) = NULL;
 	return (array);
 }
 
-void	write_word_char(char **arr, char const **s, char c)
+void	clean_array(char ***arr, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		free(*(*arr + i));
+		i++;
+	}
+	free(*arr);
+}
+
+int	write_word_char(char **arr, char const **s, char c)
 {
 	char const	*temp;
 	int			len;
@@ -53,7 +71,11 @@ void	write_word_char(char **arr, char const **s, char c)
 		temp++;
 	}
 	if (len > 0)
+	{
 		*arr = (char *)malloc(sizeof(char) * (len + 1));
+		if (*arr == NULL)
+			return (0);
+	}
 	i = -1;
 	while (++i < len)
 	{
@@ -61,7 +83,7 @@ void	write_word_char(char **arr, char const **s, char c)
 		(*s)++;
 	}
 	(*arr)[i] = '\0';
-	return ;
+	return (1);
 }
 
 size_t	word_count_char(char const *s, char c)

@@ -26,6 +26,7 @@ void ft_lstadd_front_test(int num_test);        //36
 void ft_lstsize_test(int num_test);        //37
 
 
+void ft_lstadd_back_test(int num_test);   //39
 
 //auxilary functions
 char	mapi(unsigned int i, char c);
@@ -38,7 +39,7 @@ int main(void)
 //	ft_bzero_test(8);
 //	ft_memcpy_test(9);
 //	ft_memmove_test(10);
-//	ft_atoi_test(21);
+	ft_atoi_test(21);
 //	ft_calloc_test(22);
 //	ft_substr_test(24);
 //	ft_itoa_test(28);  
@@ -46,9 +47,11 @@ int main(void)
 //
 
 //	ft_lstnew_test(35);
-	ft_lstadd_front_test(36);     
-	ft_lstsize_test(37);       
-//temp modification for git
+//	ft_lstadd_front_test(36);     
+//	ft_lstsize_test(37);       
+	
+//	ft_lstadd_back_test(39); 
+	
 	return (0);
 }
 
@@ -222,9 +225,39 @@ void	ft_memmove_test(int num_test)  // 09
 void ft_atoi_test(int num_test) // 21
 {
 	
+	char *str[]  = {"+5481237" , 
+		"-5481237",
+		"2147483647", //MAX_INT
+		"2147483649",
+		"-2147483699",
+		"-12789479812379481",
+		"12789479812379481",
+		"203458024385908220934850234523452349433405523",
+		"-10923480912809514850932830941802938481028304810280384",
+		"-1092348091280951485093283094180293848102830481028031112734987293174982379147239817498172398471982374981872398174239387149823374890563470228237410982374017238974902730149827340917203947102938370496570439834732908162501239874109823784",
+		"\0"};
+	int	i = 0;
+	int answ_true;
+	int answ_ft;
+	int count = 0;
+
 	printf("START Test %d - atoi\n\n", num_test);
-	printf("%d\n", atoi("++548"));
-	printf("%d\n", ft_atoi("++548"));
+	while (*str[i] != '\0')
+	{
+		answ_true = atoi(str[i]);
+		answ_ft = ft_atoi(str[i]);
+		if (answ_true != answ_ft || 0)  // 0-> 1 for printing all
+		{
+			printf("%d\n", answ_true);
+			printf("%d\n\n", answ_ft);
+			count++;
+		}
+		i++;
+	}
+	if (!count)
+		printf("atoi OK\n\n");
+	else
+		printf("atoi KO\n\n");
 }
 	
 void ft_substr_test(int num_test)  //24
@@ -352,3 +385,34 @@ void ft_lstsize_test(int num_test)        //37
 	printf("list size: 2=%d\n", len);
 }
 
+void ft_lstadd_back_test(int num_test)    //38
+{
+	t_list *pnt_head;
+	t_list *pnt_new1;
+	t_list *pnt_new2;
+	t_list *pnt_new3;
+	t_list *pnt;
+	int i = 1;
+	int c = 1;
+	int d = 2;
+	int f = 3;
+
+	printf("Test for lstadd_back  %d\n", num_test);
+
+	pnt_head = NULL;
+	pnt_new1 = ft_lstnew(&c);
+	pnt_new2 = ft_lstnew(&d);
+	pnt_new3 = ft_lstnew(&f);
+
+	ft_lstadd_back(&pnt_head,pnt_new1);
+	ft_lstadd_back(&pnt_head,pnt_new2);
+	ft_lstadd_back(&pnt_head,pnt_new3);
+	pnt = pnt_head;
+	while (pnt)
+	{
+		printf("%d = %d\n", i, *(int *)(pnt->content));
+		pnt = pnt->next;
+		i++;
+	}
+
+}
