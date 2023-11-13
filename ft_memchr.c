@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 10:49:18 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/02 10:49:26 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:23:04 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return (ptr);
 		ptr++;
 	}
-	return (NULL);
+	return ((void *)0);
 }

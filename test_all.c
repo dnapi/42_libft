@@ -26,7 +26,7 @@ void ft_lstadd_front_test(int num_test);        //36
 void ft_lstsize_test(int num_test);        //37
 
 
-void ft_lstadd_back_test(int num_test);   //39
+void ft_lstadd_back_test(int num_test);  //39
 
 //auxilary functions
 char	mapi(unsigned int i, char c);
@@ -229,12 +229,18 @@ void ft_atoi_test(int num_test) // 21
 		"-5481237",
 		"2147483647", //MAX_INT
 		"2147483649",
-		"-2147483699",
+		"-2147483649"
+		"-2147483647"
+		"-2147483648",  // =MIN_INT
 		"-12789479812379481",
 		"12789479812379481",
 		"203458024385908220934850234523452349433405523",
 		"-10923480912809514850932830941802938481028304810280384",
 		"-1092348091280951485093283094180293848102830481028031112734987293174982379147239817498172398471982374981872398174239387149823374890563470228237410982374017238974902730149827340917203947102938370496570439834732908162501239874109823784",
+		"9223372036854775809",  // LLONG_MAX + 2
+		"9223372036854775808",  // LLONG_MAX + 1
+		"9223372036854775807",  // LLONG_MAX
+		"9223372036854775800",
 		"\0"};
 	int	i = 0;
 	int answ_true;
@@ -246,10 +252,11 @@ void ft_atoi_test(int num_test) // 21
 	{
 		answ_true = atoi(str[i]);
 		answ_ft = ft_atoi(str[i]);
-		if (answ_true != answ_ft || 0)  // 0-> 1 for printing all
+		if (answ_true != answ_ft || 1)  // 0-> 1 for printing all
 		{
-			printf("%d\n", answ_true);
-			printf("%d\n\n", answ_ft);
+			printf("string =%s\n", str[i]);
+			printf("atoi=%d\n", answ_true);
+			printf("ft=%d\n\n", answ_ft);
 			count++;
 		}
 		i++;

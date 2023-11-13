@@ -6,11 +6,9 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:12:24 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/03 14:14:11 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:06:04 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isprint(int c)
 {

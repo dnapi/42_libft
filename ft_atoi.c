@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 13:13:34 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/13 10:32:14 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:05:38 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,19 @@ int	inv_sign(int sign)
 int	ft_atoi(const char *str)
 {
 	long	sign;
-	size_t	i;
 	long	answ;
 	long	temp;
 
 	sign = 1;
-	i = 0;
 	answ = 0;
-	while ((8 < str[i] && str[i] < 14) || str[i] == ' ')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-		if (str[i++] == '-')
+	while ((8 < *str && *str < 14) || *str == ' ')
+		str++;
+	if (*str == '-' || *str == '+')
+		if (*str++ == '-')
 			sign = -1;
-	while (str[i] != '\0' && '0' <= str[i] && str[i] <= '9')
+	while (*str != '\0' && '0' <= *str && *str <= '9')
 	{
-		temp = answ * 10 + str[i++] - '0';
+		temp = answ * 10 + (*str++) - '0';
 		if (temp >= answ)
 			answ = temp;
 		else

@@ -6,11 +6,9 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:02:06 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/03 14:03:55 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:04:27 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isalnum(int c)
 {

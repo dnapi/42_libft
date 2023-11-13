@@ -6,11 +6,9 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:05:46 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/03 14:11:49 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:05:11 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isascii(int c)
 {

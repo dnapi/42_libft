@@ -6,11 +6,9 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 08:47:17 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/01 08:47:45 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:14:13 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -23,5 +21,5 @@ char	*ft_strchr(const char *s, int c)
 	if (*s == (char)c)
 		return ((char *)s);
 	else
-		return (NULL);
+		return ((char *)0);
 }
