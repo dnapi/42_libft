@@ -227,11 +227,14 @@ void ft_atoi_test(int num_test) // 21
 	
 	char *str[]  = {"+5481237" , 
 		"-5481237",
-		"2147483647", //MAX_INT
-		"2147483649",
-		"-2147483649"
-		"-2147483647"
+		"2147483647", //MAX_INT = 2**31 -1
+		"2147483648", // 10(MAX_INT/10 ) + 8
+		"2147483649", // 10(MAX_INT/10 ) + 9
+		"-2147483649",
+		"-2147483647",
 		"-2147483648",  // =MIN_INT
+		"-2147483650",  // =MIN_INT - 2
+		" 13421772800",  //  sing is not channging for 32 signed int
 		"-12789479812379481",
 		"12789479812379481",
 		"203458024385908220934850234523452349433405523",
@@ -240,19 +243,33 @@ void ft_atoi_test(int num_test) // 21
 		"9223372036854775809",  // LLONG_MAX + 2
 		"9223372036854775808",  // LLONG_MAX + 1
 		"9223372036854775807",  // LLONG_MAX
-		"9223372036854775800",
+		"9223372036854775800", // LLONG_MAX - 7
+		"5764607523034234880", //>>> 2**62 + 2**60
+		"63410682753376583680", // (2**62+2**60 +2**59)*10
+		"63410682753376583687", // (2**62+2**60 +2**59)*10 + 7
 		"\0"};
 	int	i = 0;
 	int answ_true;
 	int answ_ft;
 	int count = 0;
+	long long  max_long64;
+	long num = 5764607523034234880;
+	long long  llong_max_10 = ((unsigned long long)(-1))/2/10;
 
 	printf("START Test %d - atoi\n\n", num_test);
+
+
+	max_long64 = ((unsigned long)(-1))/2;
+	printf("max long long = ? = %lld\n", max_long64);
+	printf("max long long / 10 = %lld\n", llong_max_10);
+//	printf("atoi for 5764607523034234880=> 0=?=%lu\n",(unsigned long)num);
+//	printf("atoi=%d\n", atoi("5764607523034234880"));
+
 	while (*str[i] != '\0')
 	{
 		answ_true = atoi(str[i]);
 		answ_ft = ft_atoi(str[i]);
-		if (answ_true != answ_ft || 1)  // 0-> 1 for printing all
+		if (answ_true != answ_ft || 0)  // 0-> 1 for printing all
 		{
 			printf("string =%s\n", str[i]);
 			printf("atoi=%d\n", answ_true);
