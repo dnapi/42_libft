@@ -33,7 +33,7 @@ int	ft_atoi(const char *str)
 	if (*str == '-' || *str == '+')
 		if (*str++ == '-')
 			sign = -1;
-	while (*str != '\0' && '0' <= *str && *str <= '9')
+	while ('0' <= *str && *str <= '9')
 	{
 		if (answ < llong_max_10 || (answ == llong_max_10 && *str < '8'))
 			answ = answ * 10 + ((*str++) - '0');
