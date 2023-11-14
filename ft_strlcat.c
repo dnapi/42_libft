@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 08:48:51 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/13 15:19:33 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:52:46 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 
 	len_s = 0;
 	len_d = 0;
-	if (!dst && !dstsize)
-		return (0);
-	while (src[len_s])
+	while (*src && src[len_s])
 		len_s++;
+	if (!dst && !dstsize)
+		return (len_s);
 	while (dst[len_d] && len_d <= dstsize)
 		len_d++;
 	if (dstsize == 0 || dstsize <= len_d)

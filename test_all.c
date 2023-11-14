@@ -13,6 +13,8 @@ void ft_memset_test(int num_test); // 07
 void ft_bzero_test(int num_test);  // 08	
 void ft_memcpy_test(int num_test); // 09
 void ft_memmove_test(int num_test);  // 10
+void	ft_strlcat_test(int num_test);   //12
+
 void ft_atoi_test(int num_test);  // 21
 void ft_calloc_test(int num_test);  // 22
 
@@ -39,7 +41,9 @@ int main(void)
 //	ft_bzero_test(8);
 //	ft_memcpy_test(9);
 //	ft_memmove_test(10);
-	ft_atoi_test(21);
+	ft_strlcat_test(12);  
+
+//	ft_atoi_test(21);
 //	ft_calloc_test(22);
 //	ft_substr_test(24);
 //	ft_itoa_test(28);  
@@ -222,6 +226,19 @@ void	ft_memmove_test(int num_test)  // 09
     return ;
 }
 
+void	ft_strlcat_test(int num_test)   //12
+{
+    printf("original = %lu\n", strlcat(NULL,"World",0));
+    printf("ft = %lu\n\n", ft_strlcat(NULL,"World",0));
+
+// segmentation fault 
+//    printf("original = %lu\n", strlcat("World", NULL, 0));
+  printf("ft = %lu\n\n", ft_strlcat("World", NULL, 0));
+}
+
+
+
+
 void ft_atoi_test(int num_test) // 21
 {
 	
@@ -302,6 +319,7 @@ void ft_itoa_test(int num_test)       //28
 	s = ft_itoa(i);
 	printf("%s\n",s);
 }
+
 
 
 void ft_strmapi_test(int num_test)        //29
