@@ -41,9 +41,9 @@ int main(void)
 //	ft_bzero_test(8);
 //	ft_memcpy_test(9);
 //	ft_memmove_test(10);
-	ft_strlcat_test(12);  
+//	ft_strlcat_test(12);  
 
-//	ft_atoi_test(21);
+	ft_atoi_test(21);
 //	ft_calloc_test(22);
 //	ft_substr_test(24);
 //	ft_itoa_test(28);  
@@ -261,9 +261,14 @@ void ft_atoi_test(int num_test) // 21
 		"9223372036854775808",  // LLONG_MAX + 1
 		"9223372036854775807",  // LLONG_MAX
 		"9223372036854775800", // LLONG_MAX - 7
+		"-9223372036854775809",  // LLONG_MIN -1
+		"-9223372036854775808",  // LLONG_MIN
+		"-9223372036854775807",  // LLONG_MIN +1
+		"-9223372036854775800", // LLONG_MIN + 8
 		"5764607523034234880", //>>> 2**62 + 2**60
 		"63410682753376583680", // (2**62+2**60 +2**59)*10
-		"63410682753376583687", // (2**62+2**60 +2**59)*10 + 7
+		"-63410682753376583680", // (2**62+2**60 +2**59)*10
+		"-63410682753376583687", // (2**62+2**60 +2**59)*10 + 7
 		"\0"};
 	int	i = 0;
 	int answ_true;
@@ -276,11 +281,9 @@ void ft_atoi_test(int num_test) // 21
 	printf("START Test %d - atoi\n\n", num_test);
 
 
-	max_long64 = ((unsigned long)(-1))/2;
-	printf("max long long = ? = %lld\n", max_long64);
-	printf("max long long / 10 = %lld\n", llong_max_10);
-//	printf("atoi for 5764607523034234880=> 0=?=%lu\n",(unsigned long)num);
-//	printf("atoi=%d\n", atoi("5764607523034234880"));
+//	max_long64 = ((unsigned long)(-1))/2;
+//	printf("max long long = ? = %lld\n", max_long64);
+//	printf("max long long / 10 = %lld\n", llong_max_10);
 
 	while (*str[i] != '\0')
 	{

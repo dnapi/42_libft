@@ -12,33 +12,28 @@
 
 #include "libft.h"
 
-int	inv_sign(int sign)
-{
-	if (sign > 0)
-		return (-1);
-	return (0);
-}
-
 int	ft_atoi(const char *str)
 {
-	int			sign;
+	int		sign;
 	long long	answ;
-	long long	llong_max_10;
-
+	long long	llong_max;
+	
+	llong_max = ((unsigned long long)(-1)) / 2;
 	sign = 1;
 	answ = 0;
-	llong_max_10 = ((unsigned long long)(-1)) / 2 / 10;
 	while ((8 < *str && *str < 14) || *str == ' ')
 		str++;
 	if (*str == '-' || *str == '+')
 		if (*str++ == '-')
 			sign = -1;
-	while (*str != '\0' && '0' <= *str && *str <= '9')
+	while ('0' <= *str && *str <= '9')
 	{
-		if (answ < llong_max_10 || (answ == llong_max_10 && *str < '8'))
-			answ = answ * 10 + ((*str++) - '0');
-		else
-			return (inv_sign(sign));
+		if (answ > llong_max / 10)
+			return ((sign > 0) * (-1));
+		answ = answ * 10;
+		if (answ > llong_max - (*str - '0'))
+			return ((sign > 0) * (-1));
+		answ = answ + ((*str++) - '0');
 	}
 	return ((int)(sign * answ));
 }
