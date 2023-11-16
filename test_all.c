@@ -41,14 +41,14 @@ int main(void)
 //	ft_bzero_test(8);
 //	ft_memcpy_test(9);
 //	ft_memmove_test(10);
-//	ft_strlcat_test(12);  
+	ft_strlcat_test(12);  
 
 	ft_atoi_test(21);
 //	ft_calloc_test(22);
 //	ft_substr_test(24);
 //	ft_itoa_test(28);  
 //	ft_strmapi_test(29);
-//
+
 
 //	ft_lstnew_test(35);
 //	ft_lstadd_front_test(36);     
@@ -228,12 +228,14 @@ void	ft_memmove_test(int num_test)  // 09
 
 void	ft_strlcat_test(int num_test)   //12
 {
-    printf("original = %lu\n", strlcat(NULL,"World",0));
+	printf("START Test %d - strlcat\n\n", num_test);
+    
+	printf("original = %lu\n", strlcat(NULL,"World",0));
     printf("ft = %lu\n\n", ft_strlcat(NULL,"World",0));
 
-// segmentation fault 
+// segmentation fault check
 //    printf("original = %lu\n", strlcat("World", NULL, 0));
-  printf("ft = %lu\n\n", ft_strlcat("World", NULL, 0));
+//  printf("ft = %lu\n\n", ft_strlcat("World", NULL, 0));
 }
 
 

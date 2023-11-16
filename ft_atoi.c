@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 13:13:34 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/14 15:56:51 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/11/15 07:11:41 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_atoi(const char *str)
 {
-	int		sign;
+	int			sign;
 	long long	answ;
 	long long	llong_max;
-	
+
 	llong_max = ((unsigned long long)(-1)) / 2;
 	sign = 1;
 	answ = 0;
