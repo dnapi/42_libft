@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:40:28 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/02 09:06:14 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/12/31 09:42:07 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	count;
+	char	*pnt;
 
-	count = 0;
-	while (*s)
-	{
-		count++;
-		s++;
-	}
-	return (count);
+	pnt = (char *)s;
+	while (*pnt)
+		pnt++;
+	return (pnt - s);
 }

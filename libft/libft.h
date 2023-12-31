@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:14:33 by apimikov          #+#    #+#             */
-/*   Updated: 2023/11/16 10:28:02 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/12/31 11:00:30 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+//ft_split functions
+size_t	word_count_char(char const *s, char c);
+void	clean_array(char ***arr, size_t len);
 
 #endif 

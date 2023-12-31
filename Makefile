@@ -1,74 +1,65 @@
-NAME = libft.a
+NAME = push_swap
+BONUS = checker
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-SRC = ft_isascii.c \
-	  ft_memcpy.c \
-	  ft_strlcat.c \
-	  ft_strrchr.c \
-	  ft_bzero.c \
-	  ft_isdigit.c \
-	  ft_memmove.c \
-	  ft_strlcpy.c \
-	  ft_tolower.c \
-	  ft_calloc.c \
-	  ft_isprint.c \
-	  ft_memset.c \
-	  ft_strlen.c \
-	  ft_toupper.c \
-	  ft_isalnum.c \
-	  ft_memchr.c \
-	  ft_strchr.c \
-	  ft_strncmp.c \
-	  ft_isalpha.c \
-	  ft_memcmp.c \
-	  ft_strdup.c \
-	  ft_strnstr.c \
-	  ft_atoi.c \
-	  ft_calloc.c \
-	  ft_strdup.c \
-	  ft_substr.c \
-	  ft_strjoin.c \
-	  ft_strtrim.c \
-	  ft_split.c \
-	  ft_itoa.c \
-	  ft_strmapi.c \
-	  ft_striteri.c \
-	  ft_putchar_fd.c \
-	  ft_putstr_fd.c \
-	  ft_putendl_fd.c \
-	  ft_putnbr_fd.c
+SRC =	push_swap.c \
+	check_args.c \
+	libft_mod.c \
+	make_stack.c \
+	direct_sorting.c \
+	stack_push_swap.c \
+	stack_rotate.c \
+	oper_rx.c \
+	oper_px_sx.c \
+	oper_rrx.c \
+	sort.c \
+	sort_fun.c \
+	stack_elem.c
 
-SRC_bonus = ft_lstnew_bonus.c \
-	ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
-	ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
-	ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c \
+SRC_BONUS = get_next_line.c \
+			get_next_line_utils.c \
+			checker.c \
+	check_args.c \
+	libft_mod.c \
+	make_stack.c \
+	direct_sorting.c \
+	stack_push_swap.c \
+	stack_rotate.c \
+	oper_rx.c \
+	oper_px_sx.c \
+	oper_rrx.c \
+	sort.c \
+	sort_fun.c \
+	stack_elem.c \
+	checker_utils.c
 
 FLAGS = -Wall -Wextra -Werror
 OBJ = $(SRC:.c=.o)
-OBJ_bonus = $(SRC_bonus:.c=.o)
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar -ruvcs $(NAME) $(OBJ)
-	ranlib $(NAME)
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
-.bonus_flag: $(NAME) $(OBJ) $(OBJ_bonus)
-	ar -ruvcs $(NAME) $(OBJ_bonus) $(OBJ)
-	ranlib $(NAME)
-	touch .bonus_flag
-
-bonus: .bonus_flag
+$(NAME): $(OBJ) $(LIBFT)
+	cc $(FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 %.o: %.c
 	cc $(FLAGS) -c $^ -o $@ 
 
+bonus: $(BONUS)
+
+$(BONUS): $(OBJ_BONUS)
+	cc $(FLAGS) $(OBJ_BONUS) $(LIBFT) -o $(BONUS)
+
 clean:
-	rm -f ${OBJ} ${OBJ_bonus} 
-	rm -f .bonus_flag
+	rm -f ${OBJ} ${OBJ_BONUS}
 
 fclean: clean
-	rm -f ${NAME}
+	rm -f ${NAME} $(BONUS) 
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
